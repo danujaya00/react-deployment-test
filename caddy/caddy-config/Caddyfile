@@ -1,0 +1,3 @@
+testreactapp.duckdns.org {
+    reverse_proxy  myapp:3000
+}

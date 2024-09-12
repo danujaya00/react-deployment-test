@@ -1,0 +1,25 @@
+services:
+  caddy:
+    image: caddy:alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/caddy-config/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/caddy-data:/data
+    networks:
+      - app_network
+  myapp:
+    build: .
+    container_name: myapp
+    restart: unless-stopped
+    networks:
+      - app_network
+    depends_on:
+      - caddy
+    
+networks:
+  app_network:
+    driver: bridge
