@@ -12,7 +12,7 @@ services:
     networks:
       - app_network
   myapp:
-    build: .
+    image: ghcr.io/danujaya00/react-deployment-test:main
     container_name: myapp
     restart: unless-stopped
     networks:
